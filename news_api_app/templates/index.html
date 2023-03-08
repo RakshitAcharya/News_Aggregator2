@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .github-link {
+        display: flex;
+        justify-content: space-between;
+        align-items:  center;
+        font-size: 33px;
+        margin-top: 20px;
+    }
+    
+    .github-link a {
+        color: #2196F3;
+        text-decoration: none;
+        margin-left: 10px;
+        transition: all 0.2s ease-in-out;
+    }
+    
+    .github-link a:hover {
+        color: #0D47A1;
+    }
+</style>
+
+    <title>News Search</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color:#d8cccc;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        label {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            font-size: 24px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        input[type="submit"] {
+            font-size: 24px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+            background-color: #2196F3;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0D47A1;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            align-items: center;
+            margin-bottom: 50px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 50%;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        a {
+            font-size: 18px;
+            color: #2196F3;
+            transition: all 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: #0D47A1;
+        }
+    </style>
+</head>
+<body>
+    <div class="github-link">
+        <div>
+        <span>Follow me on Github:</span>
+        <a href="https://github.com/rakshitacharya" target="_blank"><i class="fa fa-github"></i></a></div>
+    </div>
+    <h1></h1>
+    <h1>NEWS SEARCH</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="keywords">Enter your keywords:</label>
+        <input type="text" id="keywords" name="keywords" required>
+        <input type="submit" value="Search">
+    </form>
+    <body>
+        <h1>Link to News based on COUNTRY :<a href="{% url 'region' %}">CLICK HERE</a></h1>
+    </body>
+    <h1>Top Headlines</h1>
+
+    {% if articles %}
+        <ul>
+        {% for article in articles|slice:":10" %}
+            <li>
+                <h2>{{article.title}}</h2>
+                <p>{{ article.description }}</p>
+                <h4>Link :<a href="{{ article.url }}">Click here</h4></a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No articles found.</p>
+    {% endif %}
+</body>
+
+</html>
