@@ -90,9 +90,6 @@ Pygments==2.11.2
 pyparsing==3.0.7
 pyrsistent==0.18.1
 python-dateutil==2.8.2
-pytz==2021.3
-pypiwin32==223
-pyzmq==22.3.0
 qtconsole==5.2.2
 QtPy==2.0.1
 regex==2022.6.2
