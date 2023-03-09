@@ -19,6 +19,8 @@ API URL: https://newsapi.org/
 
 ## TECHNOLOGIES AND DEPENDENCIES
 
+PYTHON VERSION = 3.10.0
+
 * asgiref==3.4.1
 * dj-database-url==1.2.0
 * Django==4.0.2
